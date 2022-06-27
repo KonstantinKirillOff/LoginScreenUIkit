@@ -8,9 +8,16 @@
 import UIKit
 
 class WelcomViewController: UIViewController {
+    
+    @IBOutlet weak var greetingLabel: UILabel!
+    
+    var nickname: String!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        greetingLabel.text = "\(greetingLabel.text ?? "") \(nickname ?? "")"
 
     }
 

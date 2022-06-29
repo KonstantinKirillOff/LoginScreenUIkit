@@ -19,15 +19,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userNameTextField.delegate = self
         userNameTextField.autocorrectionType = .no
         userNameTextField.textContentType = .nickname
-        passwordTextField.isSecureTextEntry = true
-        
-        userNameTextField.delegate = self
-        passwordTextField.delegate = self
-         
         userNameTextField.returnKeyType = .next
-        
+
+        passwordTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
         passwordTextField.returnKeyType = .done
         passwordTextField.enablesReturnKeyAutomatically = true
     }

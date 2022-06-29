@@ -19,6 +19,12 @@ class LoginViewController: UIViewController {
         userNameTextField.autocorrectionType = .no
         userNameTextField.textContentType = .nickname
         passwordTextField.isSecureTextEntry = true
+        
+        userNameTextField.delegate = self
+        passwordTextField.delegate = self
+         
+        userNameTextField.returnKeyType = .next
+        passwordTextField.returnKeyType = .done
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -38,10 +44,7 @@ class LoginViewController: UIViewController {
 
     
     @IBAction func logInPressed() {
-        if userNameTextField.text != "Alex" ||
-            passwordTextField.text != "123" {
-            showAlertWith(title: "Ooops!", hint: "Not correct login or password", errorData: true)
-        }
+        checkUserData()
     }
     
     @IBAction func forgotPressedButtons(_ sender: UIButton) {
@@ -66,6 +69,35 @@ extension LoginViewController {
         alertController.addAction(alertAction)
         present(alertController, animated: true)
         
+    }
+    
+    private func checkUserData() -> Bool {
+        if userNameTextField.text != "Alex" ||
+            passwordTextField.text != "123" {
+            showAlertWith(title: "Ooops!", hint: "Not correct login or password", errorData: true)
+            return false
+        } else {
+            return true
+        }
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switchNextTextField(textField)
+        return true
+    }
+    
+    private func switchNextTextField(_ textField: UITextField) {
+        switch textField {
+        case self.userNameTextField:
+            self.passwordTextField.becomeFirstResponder()
+        default:
+            self.passwordTextField.resignFirstResponder()
+            if checkUserData() {
+                performSegue(withIdentifier: "welcomeSugue", sender: nil)
+            }
+        }
     }
 }
 

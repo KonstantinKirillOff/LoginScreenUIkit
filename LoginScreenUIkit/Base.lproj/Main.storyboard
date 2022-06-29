@@ -37,7 +37,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="logInPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Iaf-2o-adb"/>
-                                            <segue destination="ely-vr-PIf" kind="show" id="40H-Az-n1z"/>
+                                            <segue destination="ely-vr-PIf" kind="show" identifier="welcomeSugue" id="40H-Az-n1z"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="llR-HH-wcu">
@@ -88,9 +88,9 @@
         <!--Welcom View Controller-->
         <scene sceneID="dVF-wv-ZPj">
             <objects>
-                <viewController id="ely-vr-PIf" customClass="WelcomViewController" customModule="LoginScreenUIkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ely-vr-PIf" customClass="WelcomViewController" customModule="LoginScreenUIkit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w7O-Un-Ia2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="M0Y-cb-vAL">

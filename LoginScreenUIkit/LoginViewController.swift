@@ -12,6 +12,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    private let userName = "Alex"
+    private let password = "123"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +27,12 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
          
         userNameTextField.returnKeyType = .next
+        
         passwordTextField.returnKeyType = .done
+        passwordTextField.enablesReturnKeyAutomatically = true
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomVC = segue.destination as? WelcomViewController else { return }
         welcomVC.nickname = userNameTextField.text
@@ -49,9 +50,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPressedButtons(_ sender: UIButton) {
         if sender.tag == 1 {
-            showAlertWith(title: "Don't forget! There is your user name:", hint: "Alex")
+            showAlertWith(title: "Don't forget! There is your user name:", hint: userName)
         } else {
-            showAlertWith(title: "Don't forget! There is your password:", hint: "123")
+            showAlertWith(title: "Don't forget! There is your password:", hint: password)
         }
     }
     
@@ -72,8 +73,8 @@ extension LoginViewController {
     }
     
     private func checkUserData() -> Bool {
-        if userNameTextField.text != "Alex" ||
-            passwordTextField.text != "123" {
+        if userNameTextField.text != userName ||
+            passwordTextField.text != password {
             showAlertWith(title: "Ooops!", hint: "Not correct login or password", errorData: true)
             return false
         } else {
@@ -83,17 +84,22 @@ extension LoginViewController {
 }
 
 extension LoginViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switchNextTextField(textField)
         return true
     }
     
     private func switchNextTextField(_ textField: UITextField) {
-        switch textField {
-        case self.userNameTextField:
-            self.passwordTextField.becomeFirstResponder()
-        default:
-            self.passwordTextField.resignFirstResponder()
+        if textField == userNameTextField {
+            
+            passwordTextField.becomeFirstResponder()
+        } else {
+            //passwordTextField.resignFirstResponder()
             if checkUserData() {
                 performSegue(withIdentifier: "welcomeSugue", sender: nil)
             }

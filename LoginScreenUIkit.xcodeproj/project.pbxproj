@@ -61,11 +61,11 @@
 				FFC462DF2869B38D00B1DE4E /* AppDelegate.swift */,
 				FFC462E12869B38D00B1DE4E /* SceneDelegate.swift */,
 				FFC462E32869B38D00B1DE4E /* LoginViewController.swift */,
-				FFC462E52869B38D00B1DE4E /* Main.storyboard */,
-				FFC462E82869B38F00B1DE4E /* Assets.xcassets */,
-				FFC462EA2869B38F00B1DE4E /* LaunchScreen.storyboard */,
-				FFC462ED2869B38F00B1DE4E /* Info.plist */,
 				FFC462F32869BADC00B1DE4E /* WelcomViewController.swift */,
+				FFC462E52869B38D00B1DE4E /* Main.storyboard */,
+				FFC462EA2869B38F00B1DE4E /* LaunchScreen.storyboard */,
+				FFC462E82869B38F00B1DE4E /* Assets.xcassets */,
+				FFC462ED2869B38F00B1DE4E /* Info.plist */,
 			);
 			path = LoginScreenUIkit;
 			sourceTree = "<group>";

@@ -13,7 +13,6 @@ class WelcomViewController: UIViewController {
     
     var nickname: String!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

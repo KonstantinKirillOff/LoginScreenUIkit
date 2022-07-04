@@ -12,9 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    private let userName = "Alex"
-    private let password = "123"
-    
+    private let person = Person.getMockPerson()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +30,18 @@ class LoginViewController: UIViewController {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomVC = segue.destination as? WelcomViewController else { return }
-        welcomVC.nickname = userNameTextField.text
+        guard let tabBarControllers = segue.destination as? UITabBarController else { return }
+        guard let tabBarViewControllers = tabBarControllers.viewControllers else { return }
+        
+        for viewController in tabBarViewControllers {
+            if let welcomVC = viewController as? WelcomViewController {
+                welcomVC.person = person
+            } else if let navigationVC = viewController as? UINavigationController {
+                guard let aboutMeVC = navigationVC.topViewController as? AboutMeViewController else { return }
+                aboutMeVC.person = person
+            }
+        }
+        
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
@@ -48,9 +56,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPressedButtons(_ sender: UIButton) {
         if sender.tag == 1 {
-            showAlertWith(title: "Don't forget! There is your user name:", hint: userName)
+            showAlertWith(title: "Don't forget! There is your user name:", hint: person.user.login)
         } else {
-            showAlertWith(title: "Don't forget! There is your password:", hint: password)
+            showAlertWith(title: "Don't forget! There is your password:", hint: person.user.password)
         }
     }
     
@@ -71,8 +79,8 @@ extension LoginViewController {
     }
     
     private func checkUserData() -> Bool {
-        if userNameTextField.text != userName ||
-            passwordTextField.text != password {
+        if userNameTextField.text != person.user.login ||
+            passwordTextField.text != person.user.password {
             showAlertWith(title: "Ooops!", hint: "Not correct login or password", errorData: true)
             return false
         } else {

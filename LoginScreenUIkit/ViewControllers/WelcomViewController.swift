@@ -11,12 +11,12 @@ class WelcomViewController: UIViewController {
     
     @IBOutlet weak var greetingLabel: UILabel!
     
-    var nickname: String!
+    var person: Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        greetingLabel.text = "\(greetingLabel.text ?? "") \(nickname ?? "")"
+        greetingLabel.text = "✌️Hi \(person.name)"
 
     }
 

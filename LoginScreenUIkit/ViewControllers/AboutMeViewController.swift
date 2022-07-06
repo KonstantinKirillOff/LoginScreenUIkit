@@ -9,7 +9,11 @@ import UIKit
 
 class AboutMeViewController: UIViewController {
     
-    @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet weak var photoImage: UIImageView! {
+        didSet {
+            photoImage.layer.cornerRadius = photoImage.frame.height / 2
+        }
+    }
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!

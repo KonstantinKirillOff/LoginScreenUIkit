@@ -25,7 +25,7 @@ class AboutMeViewController: UIViewController {
         lastNameLabel.text = "Last name: \(person.lastName)"
         phoneLabel.text = "Phone: \(person.phone)"
         
-        navigationItem.title = "\(person.fullName)"
+        title = "\(person.fullName)"
 
     }
 

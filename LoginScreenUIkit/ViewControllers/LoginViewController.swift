@@ -30,8 +30,8 @@ class LoginViewController: UIViewController {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let tabBarControllers = segue.destination as? UITabBarController else { return }
-        guard let tabBarViewControllers = tabBarControllers.viewControllers else { return }
+        guard let tabBarController = segue.destination as? UITabBarController else { return }
+        guard let tabBarViewControllers = tabBarController.viewControllers else { return }
         
         for viewController in tabBarViewControllers {
             if let welcomVC = viewController as? WelcomViewController {

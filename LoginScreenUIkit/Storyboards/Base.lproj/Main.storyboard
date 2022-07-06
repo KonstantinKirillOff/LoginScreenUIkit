@@ -181,7 +181,7 @@
                             <constraint firstItem="Kjx-Ls-K5P" firstAttribute="leading" secondItem="Fne-GU-l1A" secondAttribute="leading" id="wky-s5-Nbc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Va0-pP-44T"/>
+                    <navigationItem key="navigationItem" id="Va0-pP-44T"/>
                     <connections>
                         <outlet property="lastNameLabel" destination="pid-81-gTZ" id="gVK-RJ-S6U"/>
                         <outlet property="nameLabel" destination="0PB-bM-apf" id="es7-ZA-viG"/>
@@ -199,6 +199,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="d7Z-S2-9bz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LUe-lW-thV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

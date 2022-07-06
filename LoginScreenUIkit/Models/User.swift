@@ -12,6 +12,10 @@ struct Person {
     let photo: String
     let user: User
     
+    var fullName: String {
+        "\(name) \(lastName)"
+    }
+    
     static func getMockPerson() -> Person {
         return Person(name: "Konstantin",
                       lastName: "Kirillov",
